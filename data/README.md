@@ -1,1 +1,2 @@
-This folder contains raw and transformed roost selection data for use in modeling habitat selection by EPFU and MYSE at Cape Cod National Seashore. Roost locations were obtained via radio telemetry during summer 2015-2016, with local-scale habitat covariates collected on site and landscape-scale covariates derived subsequently from pre-existing datasets.
+Raw and transformed habitat data for modeling roost selection. Raw data originates from `roost.csv` and is separated into two species datasets, `epfu` and `myse`. Both of these get an incrementing identifier with each major operation, e.g., after plotting scale of effect and choosing a radius size for each of the landscape-scale variables, the dataset is saved as `epfu1` and is ready to move on to the next step.
+
