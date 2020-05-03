@@ -39,17 +39,17 @@ roost$road300 <- scale(roost$road300)
 roost$road330 <- scale(roost$road330)
 roost$road360 <- scale(roost$road360)
 
-#roost$ptcc060 <- scale(roost$ptcc060) 
-#roost$ptcc090 <- scale(roost$ptcc090)
-#roost$ptcc120 <- scale(roost$ptcc120)
-#roost$ptcc150 <- scale(roost$ptcc150)
-#roost$ptcc180 <- scale(roost$ptcc180)
-#roost$ptcc210 <- scale(roost$ptcc210)
-#roost$ptcc240 <- scale(roost$ptcc240)
-#roost$ptcc270 <- scale(roost$ptcc270)
-#roost$ptcc300 <- scale(roost$ptcc300)
-#roost$ptcc330 <- scale(roost$ptcc330)
-#roost$ptcc360 <- scale(roost$ptcc360)
+roost$ptcc060 <- scale(roost$ptcc060) 
+roost$ptcc090 <- scale(roost$ptcc090)
+roost$ptcc120 <- scale(roost$ptcc120)
+roost$ptcc150 <- scale(roost$ptcc150)
+roost$ptcc180 <- scale(roost$ptcc180)
+roost$ptcc210 <- scale(roost$ptcc210)
+roost$ptcc240 <- scale(roost$ptcc240)
+roost$ptcc270 <- scale(roost$ptcc270)
+roost$ptcc300 <- scale(roost$ptcc300)
+roost$ptcc330 <- scale(roost$ptcc330)
+roost$ptcc360 <- scale(roost$ptcc360)
 
 roost$pdev060 <- scale(roost$pdev060)
 roost$pdev090 <- scale(roost$pdev090)
@@ -149,17 +149,17 @@ attr(roost$road300, "desc") <- "Road density within 300 m"
 attr(roost$road330, "desc") <- "Road density within 330 m"
 attr(roost$road360, "desc") <- "Road density within 360 m"
 
-#attr(roost$ptcc060, "desc") <- "Percent tree canopy cover within 60 m"
-#attr(roost$ptcc090, "desc") <- "Percent tree canopy cover within 90 m"
-#attr(roost$ptcc120, "desc") <- "Percent tree canopy cover within 120 m"
-#attr(roost$ptcc150, "desc") <- "Percent tree canopy cover within 150 m"
-#attr(roost$ptcc180, "desc") <- "Percent tree canopy cover within 180 m"
-#attr(roost$ptcc210, "desc") <- "Percent tree canopy cover within 210 m"
-#attr(roost$ptcc240, "desc") <- "Percent tree canopy cover within 240 m"
-#attr(roost$ptcc270, "desc") <- "Percent tree canopy cover within 270 m"
-#attr(roost$ptcc300, "desc") <- "Percent tree canopy cover within 300 m"
-#attr(roost$ptcc330, "desc") <- "Percent tree canopy cover within 330 m"
-#attr(roost$ptcc360, "desc") <- "Percent tree canopy cover within 360 m"
+attr(roost$ptcc060, "desc") <- "Percent tree canopy cover within 60 m"
+attr(roost$ptcc090, "desc") <- "Percent tree canopy cover within 90 m"
+attr(roost$ptcc120, "desc") <- "Percent tree canopy cover within 120 m"
+attr(roost$ptcc150, "desc") <- "Percent tree canopy cover within 150 m"
+attr(roost$ptcc180, "desc") <- "Percent tree canopy cover within 180 m"
+attr(roost$ptcc210, "desc") <- "Percent tree canopy cover within 210 m"
+attr(roost$ptcc240, "desc") <- "Percent tree canopy cover within 240 m"
+attr(roost$ptcc270, "desc") <- "Percent tree canopy cover within 270 m"
+attr(roost$ptcc300, "desc") <- "Percent tree canopy cover within 300 m"
+attr(roost$ptcc330, "desc") <- "Percent tree canopy cover within 330 m"
+attr(roost$ptcc360, "desc") <- "Percent tree canopy cover within 360 m"
 
 attr(roost$pdev060, "desc") <- "Proportion of developed land within 60 m"
 attr(roost$pdev090, "desc") <- "Proportion of developed land within 90 m"

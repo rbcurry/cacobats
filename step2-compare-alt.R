@@ -117,6 +117,17 @@ rm(var, aic.table, aic.table.name)
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
 # Tree canopy cover
+var <- c("ptcc060", "ptcc090", "ptcc120", "ptcc150", "ptcc180", "ptcc210", 
+    "ptcc240", "ptcc270", "ptcc300", "ptcc330", "ptcc360")
+
+aic.table <- aic.compare(var)
+
+aic.table.name <- paste(attr(dataset$sampleid, "spp"), ".aic.", 
+    aic.table$var[1], ".", attr(dataset$sampleid, "samples"), sep = "")
+
+assign(aic.table.name, aic.table)
+
+rm(var, aic.table, aic.table.name)
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
