@@ -20,12 +20,9 @@ for (i in 1:length(var)) {
 rm(i)
 
 # Generate AIC table
-aic.table <- AICc(m[[1]], m[[2]], m[[3]], m[[4]], m[[5]], m[[6]], m[[7]], 
-    m[[8]], m[[9]], m[[10]], m[[11]])
+aic.table <- data.frame(row.names = var, AICc = sapply(m, AICc))
 
 rm(m)
-
-rownames(aic.table) <- var
 
 aic.table$delta <- round((aic.table$AICc - min(aic.table$AICc)), digits = 4)
 aic.table <- aic.table[order(aic.table$delta), ]
@@ -37,7 +34,7 @@ aic.table$scale <- substring(rownames(aic.table),
 aic.table$spp <- as.factor(attr(dataset$sampleid, "spp"))
 aic.table$samples <- as.factor(attr(dataset$sampleid, "samples"))
 
-aic.table <- aic.table[c("spp", "samples", "var", "scale", "AICc", "delta", "df")]
+aic.table <- aic.table[c("spp", "samples", "var", "scale", "AICc", "delta")]
 
 # Write table
 write.csv(aic.table, 
@@ -91,7 +88,7 @@ rm(var, aic.table, aic.table.name)
 
 # Tree canopy cover
 var <- c("ptcc060", "ptcc090", "ptcc120", "ptcc150", "ptcc180", "ptcc210", 
-    "ptcc240", "ptcc240", "ptcc240", "ptcc240", "ptcc240")
+    "ptcc240")
 
 aic.table <- aic.compare(var)
 
@@ -169,10 +166,11 @@ rm(i, dataset, dataset.list)
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
-## Combine AIC tables
+# Combine AIC tables
 epfu.aic.combined <- data.frame(rbind(
     epfu.aic.bldg, 
     epfu.aic.road, 
+    epfu.aic.ptcc, 
     epfu.aic.pdev, 
     epfu.aic.pfor, 
     epfu.aic.pgra, 
@@ -183,6 +181,7 @@ epfu.aic.combined <- data.frame(rbind(
 myse.aic.combined <- data.frame(rbind(
     myse.aic.bldg, 
     myse.aic.road, 
+    myse.aic.ptcc, 
     myse.aic.pdev, 
     myse.aic.pfor, 
     myse.aic.pgra, 
@@ -190,6 +189,26 @@ myse.aic.combined <- data.frame(rbind(
     )
 )
 
-## Save
+# Save
 save(epfu.aic.combined, file = "./data/epfu-aic-combined.Rdata")
 save(myse.aic.combined, file = "./data/myse-aic-combined.Rdata")
+
+# Cleanup
+rm(
+    epfu.aic.bldg, 
+    epfu.aic.road, 
+    epfu.aic.ptcc, 
+    epfu.aic.pdev, 
+    epfu.aic.pfor, 
+    epfu.aic.pgra, 
+    epfu.aic.pwet, 
+    myse.aic.bldg, 
+    myse.aic.road, 
+    myse.aic.ptcc, 
+    myse.aic.pdev, 
+    myse.aic.pfor, 
+    myse.aic.pgra, 
+    myse.aic.pwet
+)
+
+    

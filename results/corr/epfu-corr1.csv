@@ -1,0 +1,14 @@
+"","dfresh","dmarine","dforcore","elev","slope","aspect","bldg","road","ptcc","pdev","pfor","pgra","pwet"
+"dfresh",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"dmarine",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"dforcore",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"elev",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"slope",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"aspect",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"bldg",NA,NA,NA,NA,NA,NA,NA,NA,-0.8,0.75,-0.76,NA,NA
+"road",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"ptcc",NA,NA,NA,NA,NA,NA,-0.8,NA,NA,-0.78,0.88,NA,NA
+"pdev",NA,NA,NA,NA,NA,NA,0.75,NA,-0.78,NA,-0.94,NA,NA
+"pfor",NA,NA,NA,NA,NA,NA,-0.76,NA,0.88,-0.94,NA,NA,NA
+"pgra",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"pwet",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

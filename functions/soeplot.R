@@ -1,11 +1,7 @@
 # Scale-of-effect plots
-soeplot <- function (aic.table, var, species) {
+soeplot <- function (aic.table, title, species) {
 
 library(ggplot2)
-
-# Set figure dimensions
-xdim <- 6.5
-ydim <- 4
 
 # Create working data frame
 aic.table <- aic.table[order(aic.table$samples, aic.table$scale), ]
@@ -16,29 +12,20 @@ df <- data.frame(
     y = aic.table$delta
 )
 
-# Colorblind-friendly palette
-cbpalette <- c(
-    "#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", 
-    "#D55E00", "#CC79A7", "#000000", "#000000", "#000000")
-
 # Plot
 soeplot <- ggplot(df) + 
 
     geom_line(
-        aes(x = df$x, y = df$y, group = df$s, color = df$s), 
+        aes(x = x, y = y, group = s, color = s), 
         show.legend = T) + 
 
     ggtitle(
-        label = paste("Scale of effect:", var), 
-        subtitle = paste("Best performance for", species, "when measured at", 
-            df$x[which(df$y == min(df$y))], "m")) + 
-
-    geom_text(
-        label = species, 
-        aes(x = 210, y = 0.90*ceiling(max(df$y))), size = 8) +
+        label = paste("Scale of effect: ", title, " (", toupper(species), ")", sep = ""), 
+        subtitle = paste("Median minimum AIC(c) =", 
+            median(df$x[df$y == 0]), "m")) + 
 
     scale_x_continuous(
-        name = "Measurement scale (m)", 
+        name = "Measured area diameter (m)", 
         breaks = df$x, 
         minor_breaks = seq(min(df$x), max(df$x), 10), 
         limits = c(min(df$x), max(df$x))) + 
@@ -50,7 +37,7 @@ soeplot <- ggplot(df) +
         limits = c(floor(min(df$y)), ceiling(max(df$y)))) + 
 
     scale_color_manual(paste("Samples", sep = ""), 
-        values = cbpalette) +
+        values = rep("#000000", length(unique(df$s)))) +
 
     theme_bw() + 
 
@@ -64,13 +51,12 @@ soeplot <- ggplot(df) +
 
 # Save
 ggsave(
-    filename = paste("./results/plots/SOE_", 
-        species, "_", 
-        var, "_", 
-        as.character(format(Sys.time(), "%Y%m%d")), ".png", sep = ""), 
+    filename = paste("./results/plots/", species, "-soe-", 
+      aic.table$var[1], ".png", sep = ""), 
   plot = soeplot,
-  width = xdim, 
-  height = ydim, 
+  device = "png", 
+  width = 6.5, 
+  height = 4, 
   units = c("in")
 )
 

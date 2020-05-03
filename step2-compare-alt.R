@@ -45,12 +45,9 @@ for (i in 1:length(var)) {
 rm(i)
 
 # Generate AIC table
-aic.table <- AICc(m[[1]], m[[2]], m[[3]], m[[4]], m[[5]], m[[6]], m[[7]], 
-    m[[8]], m[[9]], m[[10]], m[[11]])
+aic.table <- data.frame(row.names = var, AICc = sapply(m, AICc))
 
 rm(m)
-
-rownames(aic.table) <- var
 
 aic.table$delta <- round((aic.table$AICc - min(aic.table$AICc)), digits = 4)
 aic.table <- aic.table[order(aic.table$delta), ]
@@ -62,7 +59,7 @@ aic.table$scale <- substring(rownames(aic.table),
 aic.table$spp <- as.factor(attr(dataset$sampleid, "spp"))
 aic.table$samples <- as.factor(attr(dataset$sampleid, "samples"))
 
-aic.table <- aic.table[c("spp", "samples", "var", "scale", "AICc", "delta", "df")]
+aic.table <- aic.table[c("spp", "samples", "var", "scale", "AICc", "delta")]
 
 # Write table
 write.csv(aic.table, 
@@ -118,7 +115,7 @@ rm(var, aic.table, aic.table.name)
 
 # Tree canopy cover
 var <- c("ptcc060", "ptcc090", "ptcc120", "ptcc150", "ptcc180", "ptcc210", 
-    "ptcc240", "ptcc270", "ptcc300", "ptcc330", "ptcc360")
+    "ptcc240")
 
 aic.table <- aic.compare(var)
 
@@ -196,7 +193,7 @@ rm(i, dataset, dataset.list)
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
-## Combine AIC tables
+# Combine AIC tables
 epfu.aic.combined.alt <- data.frame(rbind(
     epfu.aic.bldg.100, 
     epfu.aic.bldg.90, 
@@ -220,6 +217,17 @@ epfu.aic.combined.alt <- data.frame(rbind(
     epfu.aic.road.20, 
     epfu.aic.road.10, 
     epfu.aic.road.1, 
+    epfu.aic.ptcc.100, 
+    epfu.aic.ptcc.90, 
+    epfu.aic.ptcc.80, 
+    epfu.aic.ptcc.70, 
+    epfu.aic.ptcc.60, 
+    epfu.aic.ptcc.50, 
+    epfu.aic.ptcc.40, 
+    epfu.aic.ptcc.30, 
+    epfu.aic.ptcc.20, 
+    epfu.aic.ptcc.10, 
+    epfu.aic.ptcc.1, 
     epfu.aic.pdev.100, 
     epfu.aic.pdev.90, 
     epfu.aic.pdev.80, 
@@ -290,6 +298,17 @@ myse.aic.combined.alt <- data.frame(rbind(
     myse.aic.road.20, 
     myse.aic.road.10, 
     myse.aic.road.1, 
+    myse.aic.ptcc.100, 
+    myse.aic.ptcc.90, 
+    myse.aic.ptcc.80, 
+    myse.aic.ptcc.70, 
+    myse.aic.ptcc.60, 
+    myse.aic.ptcc.50, 
+    myse.aic.ptcc.40, 
+    myse.aic.ptcc.30, 
+    myse.aic.ptcc.20, 
+    myse.aic.ptcc.10, 
+    myse.aic.ptcc.1, 
     myse.aic.pdev.100, 
     myse.aic.pdev.90, 
     myse.aic.pdev.80, 
@@ -337,11 +356,15 @@ myse.aic.combined.alt <- data.frame(rbind(
     )
 )
 
-## Save
+# Update row names
+rownames(epfu.aic.combined.alt) <- paste(df$var, df$scale, ".", df$samples, sep = "")
+rownames(myse.aic.combined.alt) <- paste(df$var, df$scale, ".", df$samples, sep = "")
+
+# Save
 save(epfu.aic.combined.alt, file = "./data/epfu-aic-combined-alt.Rdata")
 save(myse.aic.combined.alt, file = "./data/myse-aic-combined-alt.Rdata")
 
-## Cleanup
+# Cleanup
 rm(
     epfu.aic.bldg.100,
 	epfu.aic.bldg.90,
@@ -365,6 +388,17 @@ rm(
 	epfu.aic.road.20,
 	epfu.aic.road.10,
 	epfu.aic.road.1,
+    epfu.aic.ptcc.100, 
+    epfu.aic.ptcc.90, 
+    epfu.aic.ptcc.80, 
+    epfu.aic.ptcc.70, 
+    epfu.aic.ptcc.60, 
+    epfu.aic.ptcc.50, 
+    epfu.aic.ptcc.40, 
+    epfu.aic.ptcc.30, 
+    epfu.aic.ptcc.20, 
+    epfu.aic.ptcc.10, 
+    epfu.aic.ptcc.1, 
 	epfu.aic.pdev.100,
 	epfu.aic.pdev.90,
 	epfu.aic.pdev.80,
@@ -434,6 +468,17 @@ rm(
 	myse.aic.road.20,
 	myse.aic.road.10,
 	myse.aic.road.1,
+	myse.aic.ptcc.100,
+	myse.aic.ptcc.90,
+	myse.aic.ptcc.80,
+	myse.aic.ptcc.70,
+	myse.aic.ptcc.60,
+	myse.aic.ptcc.50,
+	myse.aic.ptcc.40,
+	myse.aic.ptcc.30,
+	myse.aic.ptcc.20,
+	myse.aic.ptcc.10,
+	myse.aic.ptcc.1,
 	myse.aic.pdev.100,
 	myse.aic.pdev.90,
 	myse.aic.pdev.80,
@@ -478,4 +523,29 @@ rm(
 	myse.aic.pwet.20,
 	myse.aic.pwet.10,
 	myse.aic.pwet.1
+)
+
+rm(
+    epfu.100, 
+    epfu.90, 
+    epfu.80, 
+    epfu.70, 
+    epfu.60, 
+    epfu.50, 
+    epfu.40, 
+    epfu.30, 
+    epfu.20, 
+    epfu.10, 
+    epfu.1, 
+    myse.100, 
+    myse.90, 
+    myse.80, 
+    myse.70, 
+    myse.60, 
+    myse.50, 
+    myse.40, 
+    myse.30, 
+    myse.20, 
+    myse.10, 
+    myse.1
 )

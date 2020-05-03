@@ -2,32 +2,47 @@
 load("./data/epfu.Rdata")
 load("./data/myse.Rdata")
 
-load("./data/epfu-aic-combined.Rdata")
-load("./data/myse-aic-combined.Rdata")
-
 load("./data/epfu-aic-combined-alt.Rdata")
 load("./data/myse-aic-combined-alt.Rdata")
 
-## Scale-of-effect plots
+# Scale-of-effect plots
 source("./functions/soeplot.R")
 
-soeplot(epfu.aic.combined[epfu.aic.combined$var == "bldg", ], "Bldg", "EPFU")
-soeplot(epfu.aic.combined[epfu.aic.combined$var == "road", ], "Road", "EPFU")
-#soeplot(epfu.aic.combined[epfu.aic.combined$var == "ptcc", ], "TCC", "EPFU")
-soeplot(epfu.aic.combined[epfu.aic.combined$var == "pdev", ], "NETH_Dev", "EPFU")
-soeplot(epfu.aic.combined[epfu.aic.combined$var == "pfor", ], "NETH_For", "EPFU")
-soeplot(epfu.aic.combined[epfu.aic.combined$var == "pgra", ], "NETH_Gra", "EPFU")
-soeplot(epfu.aic.combined[epfu.aic.combined$var == "pwet", ], "NETH_Wet", "EPFU")
+df <- epfu.aic.combined.alt
 
-soeplot(myse.aic.combined[myse.aic.combined$var == "bldg", ], "Bldg", "MYSE")
-soeplot(myse.aic.combined[myse.aic.combined$var == "road", ], "Road", "MYSE")
-#soeplot(myse.aic.combined[myse.aic.combined$var == "ptcc", ], "TCC", "MYSE")
-soeplot(myse.aic.combined[myse.aic.combined$var == "pdev", ], "NETH_Dev", "MYSE")
-soeplot(myse.aic.combined[myse.aic.combined$var == "pfor", ], "NETH_For", "MYSE")
-soeplot(myse.aic.combined[myse.aic.combined$var == "pgra", ], "NETH_Gra", "MYSE")
-soeplot(myse.aic.combined[myse.aic.combined$var == "pwet", ], "NETH_Wet", "MYSE")
+soeplot(df[df$var == "bldg", ], "Building density", "epfu")
+soeplot(df[df$var == "road", ], "Road density", "epfu")
+#soeplot(df[df$var == "ptcc", ], "Tree canopy cover", "epfu")
+soeplot(df[df$var == "pdev", ], "Proportion developed", "epfu")
+soeplot(df[df$var == "pfor", ], "Proportion forest", "epfu")
+soeplot(df[df$var == "pgra", ], "Proportion grass/sand", "epfu")
+soeplot(df[df$var == "pwet", ], "Proportion wetland", "epfu")
 
-## Remove vars except at chosen scale
+df <- myse.aic.combined.alt
+
+soeplot(df[df$var == "bldg", ], "bldg", "myse")
+soeplot(df[df$var == "road", ], "road", "myse")
+#soeplot(df[df$var == "ptcc", ], "Tree canopy cover", "myse")
+soeplot(df[df$var == "pdev", ], "Proportion developed", "myse")
+soeplot(df[df$var == "pfor", ], "Proportion forest", "myse")
+soeplot(df[df$var == "pgra", ], "Proportion grass/sand", "myse")
+soeplot(df[df$var == "pwet", ], "Proportion wetland", "myse")
+
+# Scale-of-effect plots (modified for ptcc)
+source("./functions/soeplot-ptcc.R")
+
+df <- epfu.aic.combined.alt
+
+soeplot(df[df$var == "ptcc", ], "Tree canopy cover", "epfu")
+
+df <- myse.aic.combined.alt
+
+soeplot(df[df$var == "ptcc", ], "Tree canopy cover", "myse")
+
+# Cleanup
+rm(epfu.aic.combined.alt, myse.aic.combined.alt, df)
+
+# Remove vars except at chosen scale
 epfu$bldg060 <- NULL
 epfu$bldg090 <- NULL
 epfu$bldg120 <- NULL
@@ -58,11 +73,11 @@ epfu$ptcc120 <- NULL
 epfu$ptcc150 <- NULL
 epfu$ptcc180 <- NULL
 epfu$ptcc210 <- NULL
-epfu$ptcc240 <- NULL
+#epfu$ptcc240 <- NULL
 epfu$ptcc270 <- NULL
 epfu$ptcc300 <- NULL
 epfu$ptcc330 <- NULL
-#epfu$ptcc360 <- NULL
+epfu$ptcc360 <- NULL
 
 epfu$pdev060 <- NULL
 epfu$pdev090 <- NULL
@@ -113,13 +128,13 @@ epfu$pwet330 <- NULL
 epfu$pwet360 <- NULL
 
 ## Rename variables
+colnames(epfu)[colnames(epfu) == "bldg360"] <- "bldg"
+colnames(epfu)[colnames(epfu) == "road180"] <- "road"
+colnames(epfu)[colnames(epfu) == "ptcc240"] <- "ptcc"
 colnames(epfu)[colnames(epfu) == "pdev360"] <- "pdev"
 colnames(epfu)[colnames(epfu) == "pfor360"] <- "pfor"
 colnames(epfu)[colnames(epfu) == "pgra300"] <- "pgra"
 colnames(epfu)[colnames(epfu) == "pwet060"] <- "pwet"
-colnames(epfu)[colnames(epfu) == "bldg360"] <- "bldg"
-colnames(epfu)[colnames(epfu) == "road180"] <- "road"
-colnames(epfu)[colnames(epfu) == "ptcc360"] <- "ptcc"
 
 # Save
 save(epfu, file = "./data/epfu1.Rdata")
@@ -210,13 +225,13 @@ myse$pwet330 <- NULL
 #myse$pwet360 <- NULL
 
 ## Rename variables
+colnames(myse)[colnames(myse) == "bldg060"] <- "bldg"
+colnames(myse)[colnames(myse) == "road090"] <- "road"
+colnames(myse)[colnames(myse) == "ptcc150"] <- "ptcc"
 colnames(myse)[colnames(myse) == "pdev150"] <- "pdev"
 colnames(myse)[colnames(myse) == "pfor150"] <- "pfor"
 colnames(myse)[colnames(myse) == "pgra090"] <- "pgra"
 colnames(myse)[colnames(myse) == "pwet360"] <- "pwet"
-colnames(myse)[colnames(myse) == "bldg060"] <- "bldg"
-colnames(myse)[colnames(myse) == "road090"] <- "road"
-colnames(myse)[colnames(myse) == "ptcc150"] <- "ptcc"
 
 ## Save data
 save(myse, file = "./data/myse1.Rdata")

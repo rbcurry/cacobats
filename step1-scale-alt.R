@@ -378,5 +378,6 @@ rm(
     roost.30, 
     roost.20, 
     roost.10, 
-    roost.1
+    roost.1,
+    roost
 )

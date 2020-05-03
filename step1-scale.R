@@ -8,7 +8,6 @@ roost <- read.csv("./data/roost.csv",
 # Scale variables
 roost$dfresh <- scale(roost$dfresh)
 roost$dmarine <- scale(roost$dmarine)
-roost$dvernal <- scale(roost$dvernal)
 roost$dforcore <- scale(roost$dforcore)
 
 roost$elev <- scale(roost$elev)
@@ -46,10 +45,10 @@ roost$ptcc150 <- scale(roost$ptcc150)
 roost$ptcc180 <- scale(roost$ptcc180)
 roost$ptcc210 <- scale(roost$ptcc210)
 roost$ptcc240 <- scale(roost$ptcc240)
-roost$ptcc270 <- scale(roost$ptcc270)
-roost$ptcc300 <- scale(roost$ptcc300)
-roost$ptcc330 <- scale(roost$ptcc330)
-roost$ptcc360 <- scale(roost$ptcc360)
+#roost$ptcc270 <- scale(roost$ptcc270)
+#roost$ptcc300 <- scale(roost$ptcc300)
+#roost$ptcc330 <- scale(roost$ptcc330)
+#roost$ptcc360 <- scale(roost$ptcc360)
 
 roost$pdev060 <- scale(roost$pdev060)
 roost$pdev090 <- scale(roost$pdev090)
@@ -118,7 +117,6 @@ roost <- data.frame(
 # Add variable descriptions
 attr(roost$dfresh, "desc") <- "Distance to fresh water"
 attr(roost$dmarine, "desc") <- "Distance to marine shore"
-attr(roost$dvernal, "desc") <- "Distance to vernal pool"
 attr(roost$dforcore, "desc") <- "Distance to forest core boundary"
 
 attr(roost$elev, "desc") <- "Elevation"
@@ -235,4 +233,3 @@ save(myse, file = "./data/myse.Rdata")
 
 # Cleanup
 rm(roost, epfu, myse)
-
