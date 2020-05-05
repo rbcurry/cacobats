@@ -12,6 +12,13 @@ df <- data.frame(
     y = aic.table$delta
 )
 
+# Mode-finding function
+mode <- function(x) {
+  ux <- unique(x)
+  tab <- tabulate(match(x, ux))
+  ux[tab == max(tab)]
+}
+
 # Plot
 soeplot <- ggplot(df) + 
 
@@ -21,8 +28,8 @@ soeplot <- ggplot(df) +
 
     ggtitle(
         label = paste("Scale of effect: ", title, " (", toupper(species), ")", sep = ""), 
-        subtitle = paste("Median minimum AIC(c) =", 
-            median(df$x[df$y == 0]), "m")) + 
+        subtitle = paste("Mode minimum AIC(c) =", 
+            mode(df$x[df$y == 0]), "m")) + 
 
     scale_x_continuous(
         name = "Measured area diameter (m)", 
@@ -51,7 +58,7 @@ soeplot <- ggplot(df) +
 
 # Save
 ggsave(
-    filename = paste("./results/plots/", species, "-soe-", 
+    filename = paste("./results/plots/soe/", species, "-soe-", 
       aic.table$var[1], ".png", sep = ""), 
   plot = soeplot,
   device = "png", 

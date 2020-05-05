@@ -55,30 +55,6 @@ epfu$bldg300 <- NULL
 epfu$bldg330 <- NULL
 #epfu$bldg360 <- NULL
 
-epfu$road060 <- NULL
-epfu$road090 <- NULL
-epfu$road120 <- NULL
-epfu$road150 <- NULL
-#epfu$road180 <- NULL
-epfu$road210 <- NULL
-epfu$road240 <- NULL
-epfu$road270 <- NULL
-epfu$road300 <- NULL
-epfu$road330 <- NULL
-epfu$road360 <- NULL
-
-epfu$ptcc060 <- NULL
-epfu$ptcc090 <- NULL
-epfu$ptcc120 <- NULL
-epfu$ptcc150 <- NULL
-epfu$ptcc180 <- NULL
-epfu$ptcc210 <- NULL
-#epfu$ptcc240 <- NULL
-epfu$ptcc270 <- NULL
-epfu$ptcc300 <- NULL
-epfu$ptcc330 <- NULL
-epfu$ptcc360 <- NULL
-
 epfu$pdev060 <- NULL
 epfu$pdev090 <- NULL
 epfu$pdev120 <- NULL
@@ -115,6 +91,18 @@ epfu$pgra270 <- NULL
 epfu$pgra330 <- NULL
 epfu$pgra360 <- NULL
 
+epfu$ptcc060 <- NULL
+epfu$ptcc090 <- NULL
+epfu$ptcc120 <- NULL
+epfu$ptcc150 <- NULL
+epfu$ptcc180 <- NULL
+epfu$ptcc210 <- NULL
+#epfu$ptcc240 <- NULL
+epfu$ptcc270 <- NULL
+epfu$ptcc300 <- NULL
+epfu$ptcc330 <- NULL
+epfu$ptcc360 <- NULL
+
 #epfu$pwet060 <- NULL
 epfu$pwet090 <- NULL
 epfu$pwet120 <- NULL
@@ -127,14 +115,26 @@ epfu$pwet300 <- NULL
 epfu$pwet330 <- NULL
 epfu$pwet360 <- NULL
 
-## Rename variables
+epfu$road060 <- NULL
+epfu$road090 <- NULL
+epfu$road120 <- NULL
+epfu$road150 <- NULL
+#epfu$road180 <- NULL
+epfu$road210 <- NULL
+epfu$road240 <- NULL
+epfu$road270 <- NULL
+epfu$road300 <- NULL
+epfu$road330 <- NULL
+epfu$road360 <- NULL
+
+# Rename variables
 colnames(epfu)[colnames(epfu) == "bldg360"] <- "bldg"
-colnames(epfu)[colnames(epfu) == "road180"] <- "road"
-colnames(epfu)[colnames(epfu) == "ptcc240"] <- "ptcc"
 colnames(epfu)[colnames(epfu) == "pdev360"] <- "pdev"
 colnames(epfu)[colnames(epfu) == "pfor360"] <- "pfor"
 colnames(epfu)[colnames(epfu) == "pgra300"] <- "pgra"
+colnames(epfu)[colnames(epfu) == "ptcc240"] <- "ptcc"
 colnames(epfu)[colnames(epfu) == "pwet060"] <- "pwet"
+colnames(epfu)[colnames(epfu) == "road180"] <- "road"
 
 # Save
 save(epfu, file = "./data/epfu1.Rdata")
@@ -151,30 +151,6 @@ myse$bldg270 <- NULL
 myse$bldg300 <- NULL
 myse$bldg330 <- NULL
 myse$bldg360 <- NULL
-
-myse$road060 <- NULL
-#myse$road090 <- NULL
-myse$road120 <- NULL
-myse$road150 <- NULL
-myse$road180 <- NULL
-myse$road210 <- NULL
-myse$road240 <- NULL
-myse$road270 <- NULL
-myse$road300 <- NULL
-myse$road330 <- NULL
-myse$road360 <- NULL
-
-myse$ptcc060 <- NULL
-myse$ptcc090 <- NULL
-myse$ptcc120 <- NULL
-#myse$ptcc150 <- NULL
-myse$ptcc180 <- NULL
-myse$ptcc210 <- NULL
-myse$ptcc240 <- NULL
-myse$ptcc270 <- NULL
-myse$ptcc300 <- NULL
-myse$ptcc330 <- NULL
-myse$ptcc360 <- NULL
 
 myse$pdev060 <- NULL
 myse$pdev090 <- NULL
@@ -212,6 +188,18 @@ myse$pgra300 <- NULL
 myse$pgra330 <- NULL
 myse$pgra360 <- NULL
 
+myse$ptcc060 <- NULL
+myse$ptcc090 <- NULL
+myse$ptcc120 <- NULL
+#myse$ptcc150 <- NULL
+myse$ptcc180 <- NULL
+myse$ptcc210 <- NULL
+myse$ptcc240 <- NULL
+myse$ptcc270 <- NULL
+myse$ptcc300 <- NULL
+myse$ptcc330 <- NULL
+myse$ptcc360 <- NULL
+
 myse$pwet060 <- NULL
 myse$pwet090 <- NULL
 myse$pwet120 <- NULL
@@ -224,14 +212,26 @@ myse$pwet300 <- NULL
 myse$pwet330 <- NULL
 #myse$pwet360 <- NULL
 
-## Rename variables
+myse$road060 <- NULL
+#myse$road090 <- NULL
+myse$road120 <- NULL
+myse$road150 <- NULL
+myse$road180 <- NULL
+myse$road210 <- NULL
+myse$road240 <- NULL
+myse$road270 <- NULL
+myse$road300 <- NULL
+myse$road330 <- NULL
+myse$road360 <- NULL
+
+# Rename variables
 colnames(myse)[colnames(myse) == "bldg060"] <- "bldg"
-colnames(myse)[colnames(myse) == "road090"] <- "road"
-colnames(myse)[colnames(myse) == "ptcc150"] <- "ptcc"
 colnames(myse)[colnames(myse) == "pdev150"] <- "pdev"
 colnames(myse)[colnames(myse) == "pfor150"] <- "pfor"
 colnames(myse)[colnames(myse) == "pgra090"] <- "pgra"
+colnames(myse)[colnames(myse) == "ptcc150"] <- "ptcc"
 colnames(myse)[colnames(myse) == "pwet360"] <- "pwet"
+colnames(myse)[colnames(myse) == "road090"] <- "road"
 
 ## Save data
 save(myse, file = "./data/myse1.Rdata")
