@@ -17,7 +17,7 @@ corr <- function(data) {
   return(df.corr)
 }
 
-# Calculate correlation table
+# Generate correlation table
 ef.corr <- corr(epfu)
 write.csv(ef.corr, "./results/corvif/epfu-corr1.csv")
 
@@ -93,6 +93,8 @@ write.csv(ms.corr, "./results/corvif/myse-corr2.csv")
 # Save
 save(epfu, file = "./data/epfu2.Rdata")
 save(myse, file = "./data/myse2.Rdata")
+
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
 # Generate global models and examine VIF
 

@@ -5,7 +5,7 @@ load("./data/myse2.Rdata")
 library(lme4)
 library(MuMIn)
 
-# Global models
+# Generate global models
 
 # EPFU
 load("./data/epfu2.Rdata")
@@ -34,9 +34,6 @@ save(myse.global, file = "./data/myse-global.Rdata")
 rm(vars)
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-
-load("./data/epfu-global.Rdata")
-load("./data/myse-global.Rdata")
 
 # Dredge
 options(na.action = "na.fail")
@@ -130,3 +127,7 @@ epfu.m12 <- glmer(use ~ aspect + dforcore + dfresh + dmarine + elev + pgra + ptc
 
 epfu.m13 <- glmer(use ~ aspect + dforcore + dfresh + dmarine + elev + pgra + ptcc + pwet + road + slope + (1|batid),
     family = "binomial", data = epfu)
+
+# Cleanup
+rm(epfu.global)
+rm(myse global)

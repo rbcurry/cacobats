@@ -1,7 +1,7 @@
 # Alternative sample sizes for available points
 # Each dataset contains 47 used points + varying numbers of available points
 
-## Data sources
+# Data sources
 load("./data/roost.Rdata")
 
 library(dplyr)
@@ -94,7 +94,7 @@ for (i in 1:length(roost.1)) {
 }
 rm(i)
 
-## Save
+# Save
 save(
     roost.100, 
     roost.90, 
@@ -109,7 +109,7 @@ save(
     roost.1, 
     file = "./data/roost-alt.Rdata")
 
-## Split into species datasets - EPFU
+# Split into species datasets - EPFU
 epfu.100 <- roost.100[roost.100$species == "EPFU", ]
 
 for (i in 1:length(epfu.100)) {
@@ -208,7 +208,7 @@ for (i in 1:length(epfu.1)) {
 }
 rm(i)
 
-## Save
+# Save
 save(
     epfu.100, 
     epfu.90, 
@@ -223,7 +223,7 @@ save(
     epfu.1, 
     file = "./data/epfu-alt.Rdata")
 
-## Cleanup
+# Cleanup
 rm(
     epfu.100, 
     epfu.90, 
@@ -238,7 +238,7 @@ rm(
     epfu.1
 )
 
-## Split into species datasets - MYSE
+# Split into species datasets - MYSE
 myse.100 <- roost.100[roost.100$species == "MYSE", ]
 
 for (i in 1:length(myse.100)) {
@@ -337,7 +337,7 @@ for (i in 1:length(myse.1)) {
 }
 rm(i)
 
-## Save
+# Save
 save(
     myse.100, 
     myse.90, 
@@ -352,7 +352,7 @@ save(
     myse.1, 
     file = "./data/myse-alt.Rdata")
 
-## Cleanup
+# Cleanup
 rm(
     myse.100, 
     myse.90, 
