@@ -44,7 +44,7 @@ soeplot <- ggplot(df) +
         limits = c(floor(min(df$y)), ceiling(max(df$y)))) + 
 
     scale_color_manual(paste("Samples", sep = ""), 
-        values = rep("#000000", length(unique(df$s)))) +
+        values = c("blue", rep("#000000", length(unique(df$s))-2), "red")) +
 
     theme_bw() + 
 
