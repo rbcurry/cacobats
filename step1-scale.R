@@ -121,7 +121,7 @@ attr(roost$dforcore, "desc") <- "Distance to forest core boundary"
 
 attr(roost$elev, "desc") <- "Elevation"
 attr(roost$slope, "desc") <- "Slope"
-attr(roost$aspect, "desc") <- "Topographic aspect"
+attr(roost$aspect, "desc") <- "Aspect"
 
 attr(roost$bldg060, "desc") <- "Building density within 60 m"
 attr(roost$bldg090, "desc") <- "Building density within 90 m"

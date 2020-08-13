@@ -9,6 +9,9 @@ load("./data/myse-dredge.Rdata")
 load("./data/myse-dredge-sd.Rdata")
 load("./data/myse-m1.Rdata")
 
+# Summary
+summary(epfu.m1)
+
 # Residuals
 resid.m1 <- resid(epfu.m1)
 
@@ -18,11 +21,13 @@ range(resid.m1)
 head(epfu.m1)
 
 p <- predict(epfu.m1, type = "response", re.form = NA)
+
 head(p*100000)
 max(p*1000000)
 min(p)
 
 # Check for normality
+?rstandard.glm
 e <- rstandard(epfu.m1)
 ?rstandard
 
@@ -39,6 +44,7 @@ df <- data.frame(x = as.numeric(epfu$aspect))
 df$use <- as.numeric(epfu$use)
 df$batid <- as.character(epfu$batid)
 
+library(lme4)
 fit <- glmer(use ~ x + (1|batid), family = "binomial", data = df)
 fitted <- data.frame(x = df$x, y = predict(fit, type = "response", re.form = NA))
 
@@ -47,7 +53,7 @@ ggplot(df, aes(x, use)) +
     geom_point(data = fitted, aes(x, y))
 
 
-str
+str(df)
 
 
 

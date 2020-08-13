@@ -8,8 +8,6 @@ library(MuMIn)
 # Generate global models
 
 # EPFU
-load("./data/epfu2.Rdata")
-
 vars <- names(epfu[9:length(names(epfu))])
 
 epfu.global <- glmer(
@@ -80,54 +78,6 @@ summary(myse.m1, correlation = F)
 
 save(myse.m1, file = "./data/myse-m1.Rdata")
 
-### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-
-# Candidate models 
-
-# Template
-epfu.m <- glmer(use ~ aspect + dforcore + dfresh + dmarine + elev + pgra + ptcc + pwet + road + slope + (1|batid),
-    family = "binomial", data = epfu)
-
-# Names
-names(epfu.dredge[6, is.na(epfu.dredge[6, ])])
-
-# EPFU candidate models
-#epfu.m2 <- glmer(use ~ aspect + dforcore + dfresh + ptcc + pwet + road + (1|batid),
-    family = "binomial", data = epfu)
-
-#epfu.m3 <- glmer(use ~ aspect + dforcore + dfresh + dmarine + ptcc + pwet + road + (1|batid),
-    family = "binomial", data = epfu)
-
-#epfu.m4 <- glmer(use ~ aspect + dfresh + ptcc + road + (1|batid),
-    family = "binomial", data = epfu)
-
-#epfu.m5 <- glmer(use ~ aspect + dfresh + dmarine + ptcc + pwet + road + (1|batid),
-    family = "binomial", data = epfu)
-
-#epfu.m6 <- glmer(use ~ dfresh + ptcc + pwet + road + (1|batid),
-    family = "binomial", data = epfu)
-
-epfu.m7 <- glmer(use ~ aspect + dforcore + dfresh + dmarine + elev + pgra + ptcc + pwet + road + slope + (1|batid),
-    family = "binomial", data = epfu)
-
-epfu.m8 <- glmer(use ~ aspect + dforcore + dfresh + dmarine + elev + pgra + ptcc + pwet + road + slope + (1|batid),
-    family = "binomial", data = epfu)
-
-epfu.m9 <- glmer(use ~ aspect + dforcore + dfresh + dmarine + elev + pgra + ptcc + pwet + road + slope + (1|batid),
-    family = "binomial", data = epfu)
-
-epfu.m10 <- glmer(use ~ aspect + dforcore + dfresh + dmarine + elev + pgra + ptcc + pwet + road + slope + (1|batid),
-    family = "binomial", data = epfu)
-
-epfu.m11 <- glmer(use ~ aspect + dforcore + dfresh + dmarine + elev + pgra + ptcc + pwet + road + slope + (1|batid),
-    family = "binomial", data = epfu)
-
-epfu.m12 <- glmer(use ~ aspect + dforcore + dfresh + dmarine + elev + pgra + ptcc + pwet + road + slope + (1|batid),
-    family = "binomial", data = epfu)
-
-epfu.m13 <- glmer(use ~ aspect + dforcore + dfresh + dmarine + elev + pgra + ptcc + pwet + road + slope + (1|batid),
-    family = "binomial", data = epfu)
-
 # Cleanup
 rm(epfu.global)
-rm(myse global)
+rm(myse.global)
